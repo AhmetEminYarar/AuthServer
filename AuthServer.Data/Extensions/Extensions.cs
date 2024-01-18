@@ -9,7 +9,7 @@ namespace AuthServer.Data.Extensions
 {
     public static class Extensions
     {
-        public static IServiceCollection Load(IServiceCollection services,IConfiguration configuration)
+        public static IServiceCollection LoadData (IServiceCollection services,IConfiguration configuration)
         {
             services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
