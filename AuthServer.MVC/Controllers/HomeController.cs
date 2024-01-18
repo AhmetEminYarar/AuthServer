@@ -1,21 +1,26 @@
-﻿using AuthServer.MVC.Models;
+﻿using AuthServer.Data.Entity;
+using AuthServer.MVC.ApiServices;
+using AuthServer.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace AuthServer.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly PersonServices _person;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(PersonServices person)
         {
-            _logger = logger;
+            _person = person;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var ApiData = await _person.GetApi();
+            var ApiList = JsonConvert.DeserializeObject<List<Person>>(ApiData);
+            return View(ApiList);
         }
 
         public IActionResult Privacy()
