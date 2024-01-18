@@ -1,6 +1,8 @@
 ﻿using AuthServer.Data.Entity;
 using AuthServer.Data.Repository;
 using AutServer.Server.Abstract;
+using Microsoft.AspNetCore.Http;
+using System;
 
 namespace AutServer.Server.Services
 {
@@ -13,18 +15,35 @@ namespace AutServer.Server.Services
             _repository = repository;
         }
 
-        public async Task<int> Add(Person entity)
+        public async Task<int> Add(Person entity, IFormFile formFile)
         {
+            if (formFile != null)
+                if (formFile.Length > 0)
+                {
+                    var filePath = Path.Combine("wwwroot", "Image", Path.GetRandomFileName());
+                    using (var stream = File.Create(filePath))
+                    {
+                        await formFile.CopyToAsync(stream);
+                    }
+                    entity.PersonImageURL = filePath;
+                }
             await _repository.Add(entity);
             return entity.Id;
         }
 
-        public async Task<int> Update(Person entity)
+        public async Task<int> Update(Person entity, IFormFile formFile)
         {
-            if (entity == null)
-            {
-                throw new Exception("Hata Update !");
-            }
+            if (formFile != null)
+                if (formFile.Length > 0)
+                {
+                    var filePath = Path.Combine("wwwroot", "Image", Path.GetRandomFileName());
+                    using (var stream = File.Create(filePath))
+                    {
+                        await formFile.CopyToAsync(stream);
+                    }
+                    entity.PersonImageURL = filePath;
+                }
+
             await _repository.Update(entity);
             return entity.Id;
         }
@@ -46,7 +65,11 @@ namespace AutServer.Server.Services
 
         public async Task<Person> GetById(int Id)
         {
-            return await _repository.GetById(Id);
+            var response = await _repository.GetById(Id);
+            if (response == null)
+                throw new Exception("Hata ById !");
+            else
+                return response;
         }
 
 

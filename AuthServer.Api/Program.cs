@@ -1,8 +1,18 @@
+using AuthServer.DTO.Extensions;
+using AutServer.Server.Extensions;
+using AuthServer.Data.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.LoadDto();
+builder.Services.LoadService();
+builder.Services.LoadData(builder.Configuration);
+
+
 
 var app = builder.Build();
 

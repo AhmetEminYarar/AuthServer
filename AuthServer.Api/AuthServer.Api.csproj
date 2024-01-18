@@ -21,7 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\AuthServer.Data\AuthServer.Data.csproj" />
+    <ProjectReference Include="..\AuthServer.DTO\AuthServer.DTO.csproj" />
+    <ProjectReference Include="..\AutServer.Server\AutServer.Server.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Image\" />
   </ItemGroup>
 
 </Project>
