@@ -1,26 +1,28 @@
 ﻿using AuthServer.Data.Entity;
-using AuthServer.MVC.ApiServices;
+using AuthServer.Data.UnitOfWork;
+using AuthServer.DTO.Response.People;
 using AuthServer.MVC.Models;
+using AutServer.Server.Abstract;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace AuthServer.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly PersonServices _person;
+        private readonly IPersonService _personService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(PersonServices person)
+        public HomeController(IPersonService personService,IUnitOfWork unitOfWork)
         {
-            _person = person;
+            _personService = personService;
+            _unitOfWork = unitOfWork;
         }
-
+        [HttpGet]
         public async Task<IActionResult> Index()
-        {
-            var ApiData = await _person.GetApi();
-            var ApiList = JsonConvert.DeserializeObject<List<Person>>(ApiData);
-            return View(ApiList);
+        {      
+            
+            return View();
         }
 
         public IActionResult Privacy()

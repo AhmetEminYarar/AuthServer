@@ -1,0 +1,34 @@
+﻿@using AuthServer.DTO.Response.People
+@model List<PersonGetAllResponse>
+<table>
+    <thead>
+        <tr>
+            <td>PersonImageURL</td>
+            <td>Name</td>
+            <td>Surname</td>
+            <td>Age</td>
+            <td>Password</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.personImageURL</td>
+                <td>@item.name</td>
+                <td>@item.surname</td>
+                <td>@item.age</td>
+                <td>@item.password</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>PersonImageURL</td>
+            <td>Name</td>
+            <td>Surname</td>
+            <td>Age</td>
+            <td>Password</td>
+        </tr>
+    </tfoot>
+</table>

@@ -1,6 +1,5 @@
 using AuthServer.Data.Extensions;
 using AuthServer.DTO.Extensions;
-using AuthServer.MVC.ApiServices;
 using AutServer.Server.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
