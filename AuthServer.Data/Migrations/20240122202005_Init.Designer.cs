@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthServer.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240117125032_Init")]
+    [Migration("20240122202005_Init")]
     partial class Init
     {
         /// <inheritdoc />

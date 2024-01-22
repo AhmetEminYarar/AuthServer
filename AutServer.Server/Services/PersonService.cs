@@ -2,7 +2,6 @@
 using AuthServer.Data.Repository;
 using AutServer.Server.Abstract;
 using Microsoft.AspNetCore.Http;
-using System;
 
 namespace AutServer.Server.Services
 {
@@ -16,34 +15,51 @@ namespace AutServer.Server.Services
         }
 
         public async Task<int> Add(Person entity, IFormFile formFile)
-        {
-            if (formFile != null)
-                if (formFile.Length > 0)
+        { 
+            if (formFile != null && formFile.Length > 0)
+            {
+                var uploadFolderPath = Path.Combine("wwwroot", "Image");
+
+                if (!Directory.Exists(uploadFolderPath))
                 {
-                    var filePath = Path.Combine("wwwroot", "Image", Path.GetRandomFileName());
-                    using (var stream = File.Create(filePath))
-                    {
-                        await formFile.CopyToAsync(stream);
-                    }
-                    entity.PersonImageURL = filePath;
+                    Directory.CreateDirectory(uploadFolderPath);
                 }
+
+                var fileName = Path.GetRandomFileName();
+                var filePath = Path.Combine(uploadFolderPath, fileName);
+
+                using (var stream = File.Create(filePath))
+                {
+                    await formFile.CopyToAsync(stream);
+                }
+
+                entity.PersonImageURL = fileName;
+            }
             await _repository.Add(entity);
             return entity.Id;
         }
 
         public async Task<int> Update(Person entity, IFormFile formFile)
         {
-            if (formFile != null)
-                if (formFile.Length > 0)
+            if (formFile != null && formFile.Length > 0)
+            {
+                var uploadFolderPath = Path.Combine("wwwroot", "Image");
+
+                if (!Directory.Exists(uploadFolderPath))
                 {
-                    var filePath = Path.Combine("wwwroot", "Image", Path.GetRandomFileName());
-                    using (var stream = File.Create(filePath))
-                    {
-                        await formFile.CopyToAsync(stream);
-                    }
-                    entity.PersonImageURL = filePath;
+                    Directory.CreateDirectory(uploadFolderPath);
                 }
 
+                var fileName = Path.GetRandomFileName();
+                var filePath = Path.Combine(uploadFolderPath, fileName);
+
+                using (var stream = File.Create(filePath))
+                {
+                    await formFile.CopyToAsync(stream);
+                }
+
+                entity.PersonImageURL = fileName;
+            }
             await _repository.Update(entity);
             return entity.Id;
         }

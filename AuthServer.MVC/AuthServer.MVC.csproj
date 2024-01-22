@@ -25,4 +25,8 @@
     <ProjectReference Include="..\AutServer.Server\AutServer.Server.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Image\" />
+  </ItemGroup>
+
 </Project>

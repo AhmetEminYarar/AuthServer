@@ -1,5 +1,4 @@
 ﻿using AuthServer.Data.Entity;
-using AuthServer.Data.Migrations;
 using AuthServer.Data.UnitOfWork;
 using AuthServer.DTO.Request.People;
 using AuthServer.DTO.Response.People;

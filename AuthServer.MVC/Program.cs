@@ -1,10 +1,13 @@
 using AuthServer.Data.Extensions;
 using AuthServer.DTO.Extensions;
+
 using AutServer.Server.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+//builder.Services.AddHttpClient<ApiService>(x => {
+//    x.BaseAddress = new Uri("htp://localhost:5141");
+//});
 builder.Services.AddControllersWithViews();
 builder.Services.LoadData(builder.Configuration);
 builder.Services.LoadDto();
@@ -24,6 +27,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");///////asdviþjkashovuhabnvpþcýkhqavopqac Controller düzelt Home olcak 
 
 app.Run();

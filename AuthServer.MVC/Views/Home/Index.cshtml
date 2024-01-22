@@ -1,7 +1,61 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using AuthServer.DTO.Response.People
+@{
+    ViewData["Title"] = "Home Page";   
+    <div class="container-fluid shadow-sm">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+        </nav>
+    </div>
 }
 
-<div class="text-center">
-   
+@model List<PersonGetAllResponse>
+@{
+    foreach (var element in Model)
+    {
+        <img src="@Url.Action("ShowImage", "Home", new { fileName = element.personImageURL})" alt="Person Image">
+        <div class="card-body">
+            <h4 class="card-title">@element.name</h4>
+            <h4 class="card-title">@element.surname</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">@element.age</li>
+        </ul>
+    }
+}
+
+
+
+
+
+
+<div class="text-center mt-5">
+   <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Index">
+        <table>
+            <tr>
+                <td>Image : </td>
+                <td><input type="file" id="personImageURL1" name="personImageURL" /></td>
+            </tr>
+            <tr>
+                <td>Name : </td>
+                <td><input type="text" id="txtname" name="name" /></td>
+            </tr> 
+            <tr>
+                <td>SurName : </td>
+                <td><input type="text" id="txtsurname" name="surname" /></td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td><input type="text" id="txtage" name="age" /></td>
+            </tr>
+            <tr>
+                <td>Password : </td>
+                <td><input type="text" id="txtpassword" name="password" /></td>
+            </tr>
+            <tr>              
+                <td><input type="submit" value="Submit"/></td>
+            </tr>
+        </table>
+    </form>
 </div>
