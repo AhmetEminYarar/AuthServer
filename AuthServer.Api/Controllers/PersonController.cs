@@ -3,6 +3,7 @@ using AuthServer.Data.UnitOfWork;
 using AuthServer.DTO.Request.People;
 using AuthServer.DTO.Response.People;
 using AutServer.Server.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthServer.Api.Controllers
