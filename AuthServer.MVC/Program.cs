@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.LoadData(builder.Configuration);
 builder.Services.LoadDto();
-builder.Services.LoadService();
+builder.Services.LoadService(builder.Configuration);
 
 var app = builder.Build();
 

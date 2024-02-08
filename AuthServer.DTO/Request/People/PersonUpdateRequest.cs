@@ -8,7 +8,7 @@ namespace AuthServer.DTO.Request.People
     
     public class PersonUpdateRequest
     {
-        public int id { get; set; }
+        public long id { get; set; }
         public IFormFile personImageURL { get; set; }
         public string name { get; set; } = string.Empty;
         public string surname { get; set; } = string.Empty;

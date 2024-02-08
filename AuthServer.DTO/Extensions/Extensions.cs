@@ -1,4 +1,5 @@
-﻿using AuthServer.DTO.Request.People;
+﻿using AuthServer.DTO.Request.Authentication;
+using AuthServer.DTO.Request.People;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,7 @@ namespace AuthServer.DTO.Extensions
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssemblyContaining<PersonAddRequest>();
             services.AddValidatorsFromAssemblyContaining<PersonUpdateRequest>();
+            services.AddValidatorsFromAssemblyContaining<AuthenticationRequest>();
             return services;
 
 

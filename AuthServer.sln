@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Data", "AuthServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.DTO", "AuthServer.DTO\AuthServer.DTO.csproj", "{7A3708BD-A85E-4132-8DFA-697C2E55B6FF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutServer.Server", "AutServer.Server\AutServer.Server.csproj", "{60685CF4-DAD8-4E57-9A68-74C8C6471378}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Server", "AutServer.Server\AuthServer.Server.csproj", "{60685CF4-DAD8-4E57-9A68-74C8C6471378}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Api", "AuthServer.Api\AuthServer.Api.csproj", "{E8660C8D-886C-47FB-9F5D-96963070A2FC}"
 EndProject

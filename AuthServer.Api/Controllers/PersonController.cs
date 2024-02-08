@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AuthServer.Api.Controllers
 {
-    [ApiController]
+    [ApiController, Authorize]
     [Route("Person")]
     public class PersonController : Controller
     {
@@ -25,7 +25,7 @@ namespace AuthServer.Api.Controllers
         {
             return Ok(new PersonGetAllResponse().Map(await _person.GetAll()));
         }
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "süperAdmin")]
         public async Task<IActionResult> Add([FromForm] PersonAddRequest request)
         {
             Person person = request.Map(request);

@@ -1,6 +1,7 @@
 ﻿using AuthServer.Data.Context;
 using AuthServer.Data.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace AuthServer.Data.Repository
 {
@@ -26,6 +27,10 @@ namespace AuthServer.Data.Repository
             await _appDbContext.Set<T>().AddAsync(entity);
             return await _appDbContext.SaveChangesAsync();
         }
+        public async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _appDbContext.Set<T>().SingleOrDefaultAsync(predicate);
+        }
 
         public async Task<int> Delete(T entity)
         {
@@ -41,7 +46,7 @@ namespace AuthServer.Data.Repository
             return await _appDbContext.SaveChangesAsync();
         }
 
-        public async Task<T> GetById(int Id)
+        public async Task<T> GetById(long Id)
         {
 
             return await _appDbContext.Set<T>().FindAsync(Id);

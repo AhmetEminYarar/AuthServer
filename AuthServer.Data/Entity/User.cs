@@ -6,9 +6,9 @@ namespace AuthServer.Data.Entity
     public class User : Base_Entity
     {
         public string UserName { get; set; } = string.Empty;
-        public string NormalizedUserName { get; set; } = string.Empty;
+        public string UserNameToLower { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string NormalizedEmail { get; set; } = string.Empty;
+        public string EmailToLower { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
         public long RoleId { get; set; }

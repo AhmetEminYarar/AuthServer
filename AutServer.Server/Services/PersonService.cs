@@ -14,7 +14,7 @@ namespace AutServer.Server.Services
             _repository = repository;
         }
 
-        public async Task<int> Add(Person entity, IFormFile formFile)
+        public async Task<long> Add(Person entity, IFormFile formFile)
         { 
             if (formFile != null && formFile.Length > 0)
             {
@@ -39,7 +39,7 @@ namespace AutServer.Server.Services
             return entity.Id;
         }
 
-        public async Task<int> Update(Person entity, IFormFile formFile)
+        public async Task<long> Update(Person entity, IFormFile formFile)
         {
             if (formFile != null && formFile.Length > 0)
             {
@@ -64,7 +64,7 @@ namespace AutServer.Server.Services
             return entity.Id;
         }
 
-        public async Task<int> Delete(Person entity)
+        public async Task<long> Delete(Person entity)
         {
             if (entity == null)
             {
@@ -79,7 +79,7 @@ namespace AutServer.Server.Services
             return await _repository.GetAll();
         }
 
-        public async Task<Person> GetById(int Id)
+        public async Task<Person> GetById(long Id)
         {
             var response = await _repository.GetById(Id);
             if (response == null)

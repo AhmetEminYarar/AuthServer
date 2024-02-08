@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
@@ -22,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AuthServer.Data\AuthServer.Data.csproj" />
+    <ProjectReference Include="..\AuthServer.DTO\AuthServer.DTO.csproj" />
   </ItemGroup>
 
 </Project>

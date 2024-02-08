@@ -4,7 +4,7 @@ namespace AuthServer.DTO.Response.People
 {
     public class PersonGetAllResponse
     {
-        public int id { get; set; }
+        public long id { get; set; }
         public string personImageURL { get; set; } = string.Empty;
         public string name { get; set; } = string.Empty;
         public string surname { get; set; } = string.Empty;
