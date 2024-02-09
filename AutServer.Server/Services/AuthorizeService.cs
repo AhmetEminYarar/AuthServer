@@ -28,7 +28,7 @@ namespace AutServer.Server.Services
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, entity.Id.ToString()),
-                new Claim(ClaimTypes.Name, entity.UserName!),
+                new Claim(ClaimTypes.Name, entity.TCKN!),
                 new Claim(ClaimTypes.Role, entity.Role.RoleName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
@@ -45,9 +45,9 @@ namespace AutServer.Server.Services
 
         public async Task<string> UserValidator(AuthenticationRequest entity)
         {
-            var user = await _userService.GetByUserName(entity.userName);
+            var user = await _userService.GetByTCKN(entity.tckn);
             if (user == null || !BCrypt.Net.BCrypt.Verify(entity.password, user!.PasswordHash))
-                throw new Exception("E-posta veya şifre yanlış");
+                throw new Exception("TCKN veya şifre yanlış");
 
             var role = await _roleService.GetByIdAsync(user.RoleId);
             user.Role.RoleName = role.RoleName;

@@ -3,27 +3,30 @@ using Microsoft.AspNetCore.Http;
 
 namespace AuthServer.DTO.Request.Users
 {
-    public class UserAddRequest
+    public class UserUpdateRequest
     {
+        public long id { get; set; }       
         public IFormFile userImageURL { get; set; }
-        public string? tckn { get; set; } 
+        public string? tckn { get; set; }
         public string? name { get; set; } 
-        public string? surname { get; set; } 
+        public string? surname { get; set; }
         public int age { get; set; }
         public string? userName { get; set; } 
-        public string? email { get; set; }
-        public string? phoneNumber { get; set; } 
-        public string? password { get; set; } 
+        public string? email { get; set; } 
+        public string? phoneNumber { get; set; }
+        public string? password { get; set; }
 
     }
-    public class UserAddRequestValidator : AbstractValidator<UserAddRequest>
+    public class UserUpdateRequestValidator : AbstractValidator<UserUpdateRequest>
     {
-        public UserAddRequestValidator()
+        public UserUpdateRequestValidator()
         {
+            RuleFor(x => x.id)
+                .NotNull().NotEmpty().WithMessage("Kullanıcı adı gereklidir.");
             RuleFor(x => x.tckn)
-               .NotNull().NotEmpty().WithMessage("TCKN gereklidir.")
-               .MinimumLength(11).WithMessage("TCKN 11 karakterden az olmamalıdır.")
-               .MaximumLength(12).WithMessage("TCKN 12 karakteri geçmemelidir.");
+              .NotNull().NotEmpty().WithMessage("TCKN gereklidir.")
+              .MinimumLength(11).WithMessage("TCKN 11 karakterden az olmamalıdır.")
+              .MaximumLength(12).WithMessage("TCKN 12 karakteri geçmemelidir.");
             RuleFor(x => x.userName)
                 .NotNull().NotEmpty().WithMessage("Kullanıcı adı gereklidir.")
                 .MaximumLength(50).WithMessage("Kullanıcı adı 50 karakteri geçmemelidir.");
@@ -51,3 +54,4 @@ namespace AuthServer.DTO.Request.Users
         }
     }
 }
+

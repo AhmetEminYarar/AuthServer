@@ -13,17 +13,20 @@ namespace AuthServer.Data.UnitOfWork
 
         public async Task BeginTranssections()
         {
-          await _appDbContext.Database.BeginTransactionAsync();
+            if (_appDbContext.Database.CurrentTransaction == null)
+                await _appDbContext.Database.BeginTransactionAsync();
         }
 
         public async Task CommitTranssections()
         {
-            await _appDbContext.Database.CommitTransactionAsync();
+            if (_appDbContext.Database.CurrentTransaction != null)
+                await _appDbContext.Database.CommitTransactionAsync();
         }
 
         public async Task RollbackTranssections()
         {
-            await _appDbContext.Database.RollbackTransactionAsync();
+            if (_appDbContext.Database.CurrentTransaction != null)
+                await _appDbContext.Database.RollbackTransactionAsync();
         }
     }
 }

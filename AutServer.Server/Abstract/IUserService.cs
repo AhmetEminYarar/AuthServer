@@ -1,18 +1,22 @@
 ﻿using AuthServer.Data.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace AutServer.Server.Abstract
 {
     public interface IUserService
     {
-        Task<long> Add(User entity);        
-        Task<long> Update(User entity);
-        Task<List<User>> GetAll();
-        Task<User> GetByUserName(string UserName);
+        Task<User> Add(User entity, IFormFile formFile);        
+        Task<User> Update(User entity, IFormFile formFile);
+        Task<User> GetByTCKN(string TCKN);
+        Task<IEnumerable<User>> GetAllAsync();
+        Task<IEnumerable<User>> WhereAsync(long UserId);
+        //Task<User> GetById(long Id);
+        //Task<User> SingleOrDefaultAsync(Expression<Func<User, bool>> predicate);
+        //Task<IEnumerable<User>> IncludeAsync(params string[] properties);
+
+
+
+
     }
 }
 

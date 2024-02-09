@@ -14,7 +14,6 @@ namespace AutServer.Server.Extensions
 
         public static IServiceCollection LoadService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IPersonService, PersonService>();
             services.AddScoped<IAuthorizeService, AuthorizeService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();

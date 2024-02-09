@@ -1,8 +1,6 @@
 ﻿using AuthServer.DTO.Request.Authentication;
 using AutServer.Server.Abstract;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthServer.Api.Controllers
@@ -20,7 +18,7 @@ namespace AuthServer.Api.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> CreateToken([FromBody] AuthenticationRequest request)
+        public async Task<IActionResult> CreateToken([FromForm] AuthenticationRequest request)
         {
             var response = await _authenticationService.UserValidator(request);
             return Ok(response);

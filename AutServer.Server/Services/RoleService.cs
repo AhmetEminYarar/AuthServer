@@ -4,7 +4,7 @@ using AutServer.Server.Abstract;
 
 namespace AutServer.Server.Services
 {
-    public class RoleService:IRoleService
+    public class RoleService : IRoleService
     {
         private readonly IRepository<Role> _repository;
 
@@ -18,8 +18,7 @@ namespace AutServer.Server.Services
             await _repository.Add(entity);
             return entity;
         }
-
-        public async Task<List<Role>> GetAllAsync()
+        public async Task<IEnumerable<Role>> GetAllAsync()
         {
             return await _repository.GetAll();
         }
@@ -27,14 +26,11 @@ namespace AutServer.Server.Services
         public async Task<Role> GetByIdAsync(long id)
         {
             return await _repository.GetById(id);
-
         }
 
         public async Task UpdateAsync(Role entity)
         {
             await _repository.Update(entity);
-
         }
-       
     }
 }
