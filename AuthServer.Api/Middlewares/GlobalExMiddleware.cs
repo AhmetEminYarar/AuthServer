@@ -38,7 +38,6 @@ namespace AuthServer.Api.Middlewares
                 await context.Response.WriteAsync(json);
             }
         }
-
     }
 }
 

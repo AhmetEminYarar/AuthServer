@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AuthServer.Api\AuthServer.Api.csproj" />
     <ProjectReference Include="..\AuthServer.Data\AuthServer.Data.csproj" />
     <ProjectReference Include="..\AuthServer.DTO\AuthServer.DTO.csproj" />
     <ProjectReference Include="..\AutServer.Server\AuthServer.Server.csproj" />

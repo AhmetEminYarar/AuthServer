@@ -36,6 +36,7 @@ namespace AutServer.Server.Extensions
                     ValidateIssuerSigningKey = true
                 };
             });
+            
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
             return services;
 

@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <!-- Bootstrap CSS dosyasını ekliyoruz -->
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .container {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        Login
+                    </div>
+                    <div class="card-body">
+                        <form method ="post" enctype="multipart/form-data" asp-controller="Login" asp-action="Login">
+                            <div class="form-group">
+                                <label for="tckn">TC Kimlik Numarası:</label>
+                                <input type="text" class="form-control" id="TCKN" name="TCKN" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" id="Password" name="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-1">Giriş Yap</button>
+                            <p class="mt-2">Hesabınız yok mu? <a href="kaydol.html">Kaydolun</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</html>
